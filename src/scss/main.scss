@@ -1,0 +1,20 @@
+html {
+  background-color: $main-color;
+  text-align: center;
+
+  body {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+
+    h1 {
+      font-size: 30px;
+      font-family: "Arial";
+      width: fit-content;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+}
