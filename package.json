@@ -16,5 +16,10 @@
     "node-sass": "^6.0.1",
     "parcel-bundler": "^1.9.4",
     "sass": "^1.43.4"
+  },
+  "dependencies": {
+    "dat.gui": "^0.7.9",
+    "regenerator-runtime": "^0.13.9",
+    "three": "^0.140.2"
   }
 }

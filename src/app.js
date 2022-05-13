@@ -1,5 +1,4 @@
-/* eslint-disable no-unused-vars */
-import SayHi from './class/SayHi';
+import Experience from './Experience/Experience';
 
-const name = 'Keshia';
-const example = new SayHi(name);
+// eslint-disable-next-line no-unused-vars
+const experience = new Experience(document.querySelector('canvas.webgl'));
