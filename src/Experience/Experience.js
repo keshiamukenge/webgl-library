@@ -7,7 +7,7 @@ import Renderer from './Renderer';
 import sources from './sources';
 
 export default class Experience {
-  constructor(canvas, { cameraOptions, activeOrbitControls, rendererOptions }) {
+  constructor(canvas, { cameraOptions, activeOrbitControls, rendererOptions, planeOptions, shaderOptions, action }) {
     window.experience = this;
 
     this.canvas = canvas;
@@ -23,8 +23,8 @@ export default class Experience {
     this.renderer = new Renderer(this, {
       rendererOptions,
     });
-    this.DOMImages = new DOMImages(this);
     this.mouseTracking = new MouseTracking(this);
+    this.DOMImages = new DOMImages(this, { action });
     
     this.debug = new Debug();
     
@@ -38,7 +38,7 @@ export default class Experience {
 
 
     this.resources.on('loaded', () => {
-      this.DOMImages.createPlane();
+      this.DOMImages.createPlane({ planeOptions, shaderOptions });
       this.DOMImages.setPlanePosition();
     });
 
