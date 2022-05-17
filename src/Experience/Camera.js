@@ -21,8 +21,8 @@ export default class Camera {
     this.instance = new THREE.PerspectiveCamera(
       cameraOptions.fov,
       this.sizes.width / this.sizes.height,
-      0.1,
       100,
+      2000,
     );
     this.instance.position.set(cameraOptions?.instance?.x, cameraOptions?.instance?.y, cameraOptions?.instance?.z);
     if(cameraOptions.lookAt) {
@@ -41,7 +41,9 @@ export default class Camera {
     this.instance.updateProjectionMatrix();
   }
 
-  update() {
-    this.controls.update();
+  update(activeOrbitControls) {
+    if(activeOrbitControls) {
+      this.controls.update();
+    }
   }
 }
