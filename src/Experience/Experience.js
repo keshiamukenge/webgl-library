@@ -1,14 +1,13 @@
 import 'regenerator-runtime/runtime.js';
 import * as THREE from 'three';
 
-import { Sizes, Time, Resources, Debug } from './Utils/';
+import { Sizes, Time, Resources, MouseTracking, DOMImages, Debug } from './Utils/';
 import Camera from './Camera';
 import Renderer from './Renderer';
-import World from './World/World';
 import sources from './sources';
 
 export default class Experience {
-  constructor(canvas) {
+  constructor(canvas, { cameraOptions, activeOrbitControls, rendererOptions }) {
     window.experience = this;
 
     this.canvas = canvas;
@@ -17,10 +16,15 @@ export default class Experience {
     this.time = new Time();
     this.scene = new THREE.Scene();
     this.resources = new Resources(sources);
-    this.camera = new Camera(this);
-    this.renderer = new Renderer(this);
-    
-    this.world = new World(this);
+    this.camera = new Camera(this, {
+      activeOrbitControls,
+      cameraOptions
+    });
+    this.renderer = new Renderer(this, {
+      rendererOptions,
+    });
+    this.mouseTracking = new MouseTracking(this);
+    this.HTMLPosition = new DOMImages();
     
     this.debug = new Debug();
 
@@ -41,5 +45,6 @@ export default class Experience {
   update() {
     this.camera.update();
     this.renderer.update();
+    this.mouseTracking.update();
   }
 }
