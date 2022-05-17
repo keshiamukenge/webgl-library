@@ -1,26 +1,14 @@
 import 'regenerator-runtime/runtime.js';
-import * as THREE from 'three';
 
 import Experience from './Experience/Experience';
+import { DOMImages } from './Experience/Utils';
 
-const geometry = new THREE.PlaneBufferGeometry(0.4, 0.6, 16, 16);
-const material = new THREE.MeshBasicMaterial({ color: 'red'});
-const mesh = new THREE.Mesh(geometry, material);
+const DOMImagesOptions = new DOMImages();
 
 const experience = new Experience(document.querySelector('canvas.webgl'), {
-  activeOrbitControls: true,
-  cameraOptions: {
-    fov: 50,
-    instance: {
-      x: 0,
-      y: 0,
-      z: 1,
-    },
-    lookAt: mesh.position
-  },
-  rendererOptions: {
-    alpha: true,
-  }
+  activeOrbitControls: false,
+  cameraOptions: DOMImagesOptions.cameraOptions,
+  rendererOptions: DOMImagesOptions.rendererOptions
 });
 
-experience.scene.add(mesh);
+console.log(experience);
