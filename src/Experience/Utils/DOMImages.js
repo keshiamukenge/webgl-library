@@ -4,7 +4,7 @@ import * as THREE from 'three';
 import EventEmitter from './EventEmitter';
 
 export default class DOMImages extends EventEmitter {
-  constructor(experience, { action }) {
+  constructor(experience, { actions }) {
     super();
 
     this.experience = experience;
@@ -34,10 +34,11 @@ export default class DOMImages extends EventEmitter {
       alpha: true,
     };
 
-    this.onScroll(action.onScroll);
-    this.onMouseMove(action.onMove);
-    this.onMouseEnter(action.onEnter);
-    this.onMouseLeave(action.onLeave);
+    this.onScroll(actions.onScroll);
+    this.onMouseMove(actions.onMove);
+    this.onMouseEnter(actions.onEnter);
+    this.onMouseLeave(actions.onLeave);
+    this.onTick(actions.onTimeRunning);
   }
 
   onScroll(onScroll) {
@@ -56,7 +57,6 @@ export default class DOMImages extends EventEmitter {
         planeOptions.widthSegments,
         planeOptions.heightSegments
       );
-      
       this.material = new THREE.ShaderMaterial({
         ...shaderOptions,
         side: THREE.DoubleSide,
@@ -67,9 +67,14 @@ export default class DOMImages extends EventEmitter {
           uTime: {
             value: 0.0
           },
+          uHover: {
+            value: new THREE.Vector2(0.5, 0.5),
+          },
+          uHoverState: {
+            value: true,
+          },
         }
       });
-      this.material.uniformsNeedUpdate = true;
       this.material.clone();
       this.material.uniforms = {
         ...this.material.uniforms,
@@ -77,6 +82,7 @@ export default class DOMImages extends EventEmitter {
           value: new THREE.TextureLoader().load(image.src),
         },
       };
+      this.material.uniformsNeedUpdate = true;
       this.mesh = new THREE.Mesh(this.geometry, this.material);
       
       this.experience.scene.add(this.mesh);
@@ -123,6 +129,12 @@ export default class DOMImages extends EventEmitter {
       this.mouseTracking.intersects.forEach(intersect => {
         onLeave(intersect);
       });
+    });
+  }
+
+  onTick(onTimeRunning) {
+    this.time.on('tick', () => {
+      onTimeRunning();
     });
   }
 
