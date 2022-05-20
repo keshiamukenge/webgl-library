@@ -35,8 +35,10 @@ export default class MouseTracking extends EventEmitter {
     this.raycaster.setFromCamera(this.coordinates, this.camera.instance);
     this.intersects = this.raycaster.intersectObjects(this.scene.children);
 	
-    for (let i = 0; i < this.intersects.length; i ++) {
+    if(this.intersects.length>0) {
       this.trigger('mouseenter');
     }
+
+    this.trigger('mouseleave');
   }
 }
