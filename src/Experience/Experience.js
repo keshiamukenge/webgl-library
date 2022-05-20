@@ -7,7 +7,7 @@ import Renderer from './Renderer';
 import sources from './sources';
 
 export default class Experience {
-  constructor(canvas, { cameraOptions, activeOrbitControls, rendererOptions, planeOptions, shaderOptions, action }) {
+  constructor(canvas, { cameraOptions, activeOrbitControls, rendererOptions, planeOptions, shaderOptions, actions }) {
     window.experience = this;
 
     this.canvas = canvas;
@@ -24,7 +24,7 @@ export default class Experience {
       rendererOptions,
     });
     this.mouseTracking = new MouseTracking(this);
-    this.DOMImages = new DOMImages(this, { action });
+    this.DOMImages = new DOMImages(this, { actions });
     
     this.debug = new Debug();
     
