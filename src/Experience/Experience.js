@@ -4,6 +4,7 @@ import * as THREE from 'three';
 import { Sizes, Time, Resources, MouseTracking, DOMImages, Debug } from './Utils/';
 import Camera from './Camera';
 import Renderer from './Renderer';
+import Scroll from './Utils/Scroll';
 import sources from './sources';
 
 export default class Experience {
@@ -14,6 +15,7 @@ export default class Experience {
 
     this.sizes = new Sizes();
     this.time = new Time();
+    this.scroll = new Scroll();
     this.scene = new THREE.Scene();
     this.resources = new Resources(sources);
     this.camera = new Camera(this, {
@@ -42,9 +44,9 @@ export default class Experience {
       this.DOMImages.setPlanePosition();
     });
 
-    this.DOMImages.on('scroll', () => {
+    /* this.DOMImages.on('scroll', () => {
       this.DOMImages.updatePlanePosition();
-    });
+    }); */
   }
   
   resize() {

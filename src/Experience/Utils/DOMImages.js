@@ -9,6 +9,7 @@ export default class DOMImages extends EventEmitter {
 
     this.experience = experience;
     this.time = this.experience.time;
+    this.scroll = this.experience.scroll;
     this.resources = this.experience.resources;
     this.mouseTracking = this.experience.mouseTracking;
     this.mousePosition = {
@@ -140,11 +141,17 @@ export default class DOMImages extends EventEmitter {
 
   updatePlanePosition() {
     this.currentScroll = 0;
-    this.currentScroll = window.scrollY;
+    // this.currentScroll = window.scrollY;
     this.setPlanePosition();
   }
 
   update() {
     this.experience.camera.instance.fov = 2 * Math.atan((this.experience.sizes.height / 2) / 600 ) * (180 / Math.PI);
+    this.scroll.render();
+    this.currentScroll = this.scroll.scrollToRender;
+
+    if(this.imageParameters) {
+      this.setPlanePosition();
+    }
   }
 }
