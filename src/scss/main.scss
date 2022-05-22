@@ -5,21 +5,31 @@ html {
   body {
     position: relative;
     width: 100vw;
-    height: 3000px;
+    height: 4000px !important;
     background-color: transparent;
 
-    h1 {
-      font-size: 30px;
-      font-family: "Arial";
-      width: fit-content;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
+    main {
+      h1 {
+        font-size: 30px;
+        font-family: "Arial";
+        width: fit-content;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
 
-    img {
-      opacity: 0;
+      .container-image {
+        margin: 2rem 0;
+
+        img {
+          opacity: 0;
+        }
+
+        p {
+          margin: 1rem 0;
+        }
+      }
     }
 
     canvas {
@@ -28,7 +38,6 @@ html {
       left: 0;
       right: 0;
       bottom: 0;
-      // z-index: -1;
     }
   }
 }
