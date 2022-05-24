@@ -8,7 +8,7 @@ import Scroll from './Utils/Scroll';
 import sources from './sources';
 
 export default class Experience {
-  constructor(canvas, { cameraOptions, activeOrbitControls, rendererOptions, planeOptions, shaderOptions, actions }) {
+  constructor(canvas, { cameraOptions, activeOrbitControls, rendererOptions, planeOptions, shaderOptions, uniformsOptions, actions }) {
     window.experience = this;
 
     this.canvas = canvas;
@@ -40,13 +40,9 @@ export default class Experience {
 
 
     this.resources.on('loaded', () => {
-      this.DOMImages.createPlane({ planeOptions, shaderOptions });
+      this.DOMImages.createPlane({ planeOptions, shaderOptions, uniformsOptions });
       this.DOMImages.setPlanePosition();
     });
-
-    /* this.DOMImages.on('scroll', () => {
-      this.DOMImages.updatePlanePosition();
-    }); */
   }
   
   resize() {
