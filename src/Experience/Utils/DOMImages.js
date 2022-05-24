@@ -72,7 +72,7 @@ export default class DOMImages extends EventEmitter {
             value: new THREE.Vector2(0.5, 0.5),
           },
           uHoverState: {
-            value: true,
+            value: 0.0,
           },
         }
       });
