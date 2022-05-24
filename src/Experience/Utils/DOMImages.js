@@ -49,7 +49,7 @@ export default class DOMImages extends EventEmitter {
     });
   }
 
-  createPlane({ planeOptions, shaderOptions }) {
+  createPlane({ planeOptions, shaderOptions, uniformsOptions }) {
     this.imageParameters = this.images.map(image => {
       let bounds = image.getBoundingClientRect();
       this.geometry = new THREE.PlaneBufferGeometry(
@@ -62,6 +62,7 @@ export default class DOMImages extends EventEmitter {
         ...shaderOptions,
         side: THREE.DoubleSide,
         uniforms: {
+          ...uniformsOptions,
           uMouse: {
             value: this.mousePosition
           },
@@ -72,7 +73,7 @@ export default class DOMImages extends EventEmitter {
             value: new THREE.Vector2(0.5, 0.5),
           },
           uHoverState: {
-            value: true,
+            value: 1.0,
           },
         }
       });
