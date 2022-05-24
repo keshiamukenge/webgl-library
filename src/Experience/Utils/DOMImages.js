@@ -142,7 +142,6 @@ export default class DOMImages extends EventEmitter {
 
   updatePlanePosition() {
     this.currentScroll = 0;
-    // this.currentScroll = window.scrollY;
     this.setPlanePosition();
   }
 
