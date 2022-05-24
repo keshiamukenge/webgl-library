@@ -61,6 +61,9 @@ export default class DOMImages extends EventEmitter {
       this.material = new THREE.ShaderMaterial({
         ...shaderOptions,
         side: THREE.DoubleSide,
+        defines: {
+          PR: window.devicePixelRatio.toFixed(1)
+        },
         uniforms: {
           uMouse: {
             value: this.mousePosition
@@ -74,13 +77,21 @@ export default class DOMImages extends EventEmitter {
           uHoverState: {
             value: true,
           },
+          uRes: {
+            value: new THREE.Vector2(window.innerWidth, window.innerHeight),
+          },
         }
       });
       this.material.clone();
       this.material.uniforms = {
         ...this.material.uniforms,
         uTexture: {
+          type: 't',
           value: new THREE.TextureLoader().load(image.src),
+        },
+        uHoverTexture: {
+          type: 't',
+          value: new THREE.TextureLoader().load('static/textures/environmentMap/texture3.jpeg')
         },
       };
       this.material.uniformsNeedUpdate = true;

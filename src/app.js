@@ -2,7 +2,7 @@ import 'regenerator-runtime/runtime.js';
 import * as THREE from 'three';
 
 import Experience from './Experience/Experience';
-import { shadersOptions } from './Experience/effects/elevationEffect/elevationEffect';
+import { shadersOptions } from './Experience/effects/revealImageEffect/revealImageEffect';
 
 const experience = new Experience(document.querySelector('canvas.webgl'), {
   activeOrbitControls: false,
@@ -27,7 +27,7 @@ const experience = new Experience(document.querySelector('canvas.webgl'), {
     alpha: true,
   },
   actions: {
-    onEnter: onEnter, 
+    onEnter: () => {}, 
     onLeave: () => {},
     onMove: () => {},
     onScroll: () => {},
@@ -36,10 +36,6 @@ const experience = new Experience(document.querySelector('canvas.webgl'), {
 });
 
 console.log(experience);
-
-function onEnter(intersect) {
-  intersect.object.material.uniforms.uHover.value = intersect.uv;
-}
 
 function onTimeRunning() {
   experience.DOMImages.imageParameters;
