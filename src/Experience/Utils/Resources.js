@@ -64,7 +64,7 @@ export default class Resources extends EventEmitter {
       const image = new Image();
 
       image.onload = this.onLoadingHtmlImages();
-      image.src = htmlImage.currentSrc;
+      image.src = htmlImage.src;
     });
   }
 
