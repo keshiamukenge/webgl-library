@@ -1,13 +1,13 @@
 {
-  "name": "basic-project",
+  "name": "webgl-three-library",
   "source": "src/index.html",
   "version": "1.0.0",
-  "description": "my basic project",
-  "main": "doc/app.js",
+  "description": "WebGL library based on Three.js to use simply shaders effects",
+  "main": "doc/waves.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "parcel doc/index.html",
-    "build": "parcel build doc/index.html"
+    "start": "parcel doc/wavesEffect.html",
+    "build": "parcel build doc/wavesEffect.html"
   },
   "author": "Keshia Mukenge",
   "license": "ISC",
@@ -33,5 +33,8 @@
     "staticPath": [
       "./doc/static"
     ]
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
   }
 }
