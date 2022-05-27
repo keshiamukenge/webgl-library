@@ -46,7 +46,13 @@ npm install ...
 
 <h2 id="title-use">How to use it ?</h2>
 
+Create `<canvas class="webgl"></canvas>` on your html.
 Instantiate the Experience class which gathers all the classes of the library.
+
+```
+new Experience(document.querySelector('canvas.webgl'), { parameters });
+```
+
 It takes different parameters :
 
 | Parameter | Value |  | Description |
@@ -66,3 +72,5 @@ It takes different parameters :
 | `actions.onLeave` | `func` | `required` | Function executed when the mouse leave the planes. The ``intersect`` parameter allows to access the intersected plane |
 | `actions.onMove` | `func` | `required` | Function executed when the mouse moves on the window |
 | `actions.onScroll` | `func` | `required` | Function executed on scroll |
+| `loaderState.startLoader` | `func` | `required` | Function executed on html images start loading |
+| `loaderState.stopLoader` | `func` | `required` | Function executed on html images finish loading |

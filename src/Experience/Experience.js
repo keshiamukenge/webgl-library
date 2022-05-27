@@ -5,10 +5,18 @@ import { Sizes, Time, Resources, MouseTracking, DOMImages, Debug } from './Utils
 import Camera from './Camera';
 import Renderer from './Renderer';
 import Scroll from './Utils/Scroll';
-import sources from './sources';
 
 export default class Experience {
-  constructor(canvas, { cameraOptions, activeOrbitControls, rendererOptions, planeOptions, shaderOptions, uniformsOptions, actions }) {
+  constructor(canvas, {
+    cameraOptions,
+    activeOrbitControls,
+    rendererOptions,
+    planeOptions,
+    shaderOptions,
+    uniformsOptions,
+    actions,
+    loaderState,
+  }) {
     window.experience = this;
 
     this.canvas = canvas;
@@ -17,7 +25,7 @@ export default class Experience {
     this.time = new Time();
     this.scroll = new Scroll();
     this.scene = new THREE.Scene();
-    this.resources = new Resources(sources);
+    this.resources = new Resources(null, loaderState);
     this.camera = new Camera(this, {
       activeOrbitControls,
       cameraOptions
@@ -26,7 +34,9 @@ export default class Experience {
       rendererOptions,
     });
     this.mouseTracking = new MouseTracking(this);
-    this.DOMImages = new DOMImages(this, { actions });
+    this.DOMImages = new DOMImages(this, {
+      actions
+    });
     
     this.debug = new Debug();
     
@@ -38,11 +48,10 @@ export default class Experience {
       this.update();
     });
 
-
-    this.resources.on('loaded', () => {
+    this.resources.onLoadedHtmlImages(() => {
       this.DOMImages.createPlane({ planeOptions, shaderOptions, uniformsOptions });
       this.DOMImages.setPlanePosition();
-    });
+    }, loaderState.stopLoader);
   }
   
   resize() {

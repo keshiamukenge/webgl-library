@@ -3,11 +3,11 @@
   "source": "src/index.html",
   "version": "1.0.0",
   "description": "my basic project",
-  "main": "app.js",
+  "main": "doc/app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "parcel src/index.html",
-    "build": "parcel build src/index.html"
+    "start": "parcel doc/index.html",
+    "build": "parcel build doc/index.html"
   },
   "author": "Keshia Mukenge",
   "license": "ISC",
@@ -25,12 +25,13 @@
     "glsl-noise": "^0.0.0",
     "glslify": "^7.1.1",
     "gsap": "^3.10.4",
+    "imagesloaded": "^5.0.0",
     "regenerator-runtime": "^0.13.9",
     "three": "^0.140.2"
   },
   "staticFiles": {
     "staticPath": [
-      "./src/static"
+      "./doc/static"
     ]
   }
 }
