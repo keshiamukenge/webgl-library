@@ -1,0 +1,32 @@
+name: 🚀 Publish on npm
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  release:
+  name: 🚀 Publish
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - name: 📚 Checkout
+      - uses: actions/checkout@v3
+      - name: 🔵 Setup Node
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '16.x'
+      - name: 💾 Install
+      - run: npm install
+      - name: 🔨 Build
+      - run: npm run build
+      - run: |
+          echo @lexacode:https://npm.pkg.github.com/ > build/.npmrc
+          echo '//npm.pkg.github.com/:_authToken=${NPM_TOKEN}' >> build/.npmrc
+      - name: 🚀 publish
+      - run: npm publish --access public
+        working-directory: ./build
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
