@@ -1,8 +1,8 @@
 import 'regenerator-runtime/runtime.js';
 import * as THREE from 'three';
 
-import Experience from '../src/Experience/Experience';
-import { shadersOptions } from '../src/Experience/effects/rippleEffect/rippleEffect';
+import Experience from '../../../src/Experience/Experience';
+import { shadersOptions } from '../../../src/Experience/effects/rippleEffect/rippleEffect';
 
 const experience = new Experience(document.querySelector('canvas.webgl'), {
   activeOrbitControls: false,

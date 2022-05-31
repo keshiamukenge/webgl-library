@@ -1,4 +1,4 @@
-import 'regenerator-runtime/runtime.js';
+// import 'regenerator-runtime/runtime.js';
 import * as THREE from 'three';
 
 import { Sizes, Time, Resources, MouseTracking, DOMImages, Debug } from './Utils/';

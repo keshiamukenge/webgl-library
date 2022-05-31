@@ -3,11 +3,11 @@
   "source": "src/index.html",
   "version": "1.0.0",
   "description": "WebGL library based on Three.js to use simply shaders effects",
-  "main": "doc/waves.js",
+  "main": "docs/index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "parcel doc/wavesEffect.html",
-    "build": "parcel build doc/wavesEffect.html"
+    "start": "parcel docs/index.html",
+    "build": "parcel build docs/index.html"
   },
   "author": "Keshia Mukenge",
   "license": "ISC",
@@ -31,7 +31,7 @@
   },
   "staticFiles": {
     "staticPath": [
-      "./doc/static"
+      "./docs/static"
     ]
   },
   "publishConfig": {

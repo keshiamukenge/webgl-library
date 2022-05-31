@@ -1,4 +1,4 @@
-import 'regenerator-runtime/runtime.js';
+// import 'regenerator-runtime/runtime.js';
 import * as THREE from 'three';
 
 import EventEmitter from './EventEmitter';
