@@ -1,14 +1,14 @@
 import 'regenerator-runtime/runtime.js';
 import * as THREE from 'three';
 
-import Experience from '../src/Experience/Experience';
-import { shadersOptions } from '../src/Experience/effects/wavesEffect/wavesEffect';
+import Experience from '../../../src/Experience/Experience';
+import { shadersOptions } from '../../../src/Experience/effects/rippleEffect/rippleEffect';
 
 const experience = new Experience(document.querySelector('canvas.webgl'), {
   activeOrbitControls: false,
   planeOptions: {
-    widthSegments: 8,
-    heightSegments: 8,
+    widthSegments: 16,
+    heightSegments: 16,
   },
   shaderOptions: {
     vertexShader: shadersOptions.vertex,
@@ -35,27 +35,19 @@ const experience = new Experience(document.querySelector('canvas.webgl'), {
     onLeave: onLeave,
     onMove: () => {},
     onScroll: () => {},
-    onTimeRunning: onTimeRunning,
+    onTimeRunning: () => {},
   }
 });
 
 function onEnter(intersect) {
   intersect.object.material.uniforms.uHover.value = intersect.uv;
+  intersect.object.material.uniforms.uTime.value = experience.time.elapsed * 0.001;
   intersect.object.material.uniformsNeedUpdate = true;
 }
 
 function onLeave(intersect) {
   intersect.object.material.uniforms.uTime.value = 0.0;
   intersect.object.material.uniformsNeedUpdate = true;
-}
-
-function onTimeRunning() {
-  experience.DOMImages.imageParameters;
-  if(experience.DOMImages.imageParameters) {
-    experience.DOMImages.imageParameters.forEach(imageParameter => {
-      imageParameter.mesh.material.uniforms.uTime.value = experience.time.elapsed * 0.002;
-    });
-  }
 }
 
 console.log(experience);
