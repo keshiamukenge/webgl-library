@@ -24,7 +24,9 @@
 
 <h2 id="title-installation">Installation</h2>
 
-This library is not available yet
+```
+npm install webgl-three-library
+```
 
 <h2 id="title-structure">Project structure</h2>
 
